@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="MailModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="MailModelStoreContainer">
+          <EntitySet Name="Letter" EntityType="MailModel.Store.Letter" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="User" EntityType="MailModel.Store.User" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Letter_User" Association="MailModel.Store.FK_Letter_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Letter" EntitySet="Letter" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Letter_User1" Association="MailModel.Store.FK_Letter_User1">
+            <End Role="User" EntitySet="User" />
+            <End Role="Letter" EntitySet="Letter" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Letter">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="TextLetter" Type="text" Nullable="false" />
+          <Property Name="Subject" Type="nvarchar" MaxLength="100" />
+          <Property Name="IdUserFromWhom" Type="int" Nullable="false" />
+          <Property Name="IdUserWhom" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Nick" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Password" Type="binary" Nullable="false" MaxLength="64" />
+        </EntityType>
+        <Association Name="FK_Letter_User">
+          <End Role="User" Type="MailModel.Store.User" Multiplicity="1" />
+          <End Role="Letter" Type="MailModel.Store.Letter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Letter">
+              <PropertyRef Name="IdUserFromWhom" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Letter_User1">
+          <End Role="User" Type="MailModel.Store.User" Multiplicity="1" />
+          <End Role="Letter" Type="MailModel.Store.Letter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Letter">
+              <PropertyRef Name="IdUserWhom" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MailModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="MailEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Letter" EntityType="MailModel.Letter" />
+          <EntitySet Name="User" EntityType="MailModel.User" />
+          <AssociationSet Name="FK_Letter_User" Association="MailModel.FK_Letter_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Letter" EntitySet="Letter" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Letter_User1" Association="MailModel.FK_Letter_User1">
+            <End Role="User" EntitySet="User" />
+            <End Role="Letter" EntitySet="Letter" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Letter">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="TextLetter" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="Subject" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="IdUserFromWhom" Type="Int32" Nullable="false" />
+          <Property Name="IdUserWhom" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="MailModel.FK_Letter_User" FromRole="Letter" ToRole="User" />
+          <NavigationProperty Name="User1" Relationship="MailModel.FK_Letter_User1" FromRole="Letter" ToRole="User" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Nick" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Password" Type="Binary" Nullable="false" MaxLength="64" FixedLength="true" />
+          <NavigationProperty Name="Letter" Relationship="MailModel.FK_Letter_User" FromRole="User" ToRole="Letter" />
+          <NavigationProperty Name="Letter1" Relationship="MailModel.FK_Letter_User1" FromRole="User" ToRole="Letter" />
+        </EntityType>
+        <Association Name="FK_Letter_User">
+          <End Role="User" Type="MailModel.User" Multiplicity="1" />
+          <End Role="Letter" Type="MailModel.Letter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Letter">
+              <PropertyRef Name="IdUserFromWhom" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Letter_User1">
+          <End Role="User" Type="MailModel.User" Multiplicity="1" />
+          <End Role="Letter" Type="MailModel.Letter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Letter">
+              <PropertyRef Name="IdUserWhom" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MailModelStoreContainer" CdmEntityContainer="MailEntities">
+          <EntitySetMapping Name="Letter">
+            <EntityTypeMapping TypeName="MailModel.Letter">
+              <MappingFragment StoreEntitySet="Letter">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TextLetter" ColumnName="TextLetter" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="IdUserFromWhom" ColumnName="IdUserFromWhom" />
+                <ScalarProperty Name="IdUserWhom" ColumnName="IdUserWhom" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="MailModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nick" ColumnName="Nick" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

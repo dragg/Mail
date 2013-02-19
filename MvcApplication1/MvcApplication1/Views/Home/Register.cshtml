@@ -1,0 +1,12 @@
+﻿@{
+    Layout = "~/Views/Layout.cshtml";
+    ViewBag.Title = "Register";
+    ViewBag.Type = "Register";
+}
+
+<form action="/Home/Register" method="post">
+    <p>Nick :<input type="text" name="Nick" /></p>
+    <p>Password :<input type="password" name="Password" /></p>
+    <p>Confinm password :<input type="password" name="confinmPassword" /></p>
+    <input class="button" type="submit" value="Register" />
+</form>
