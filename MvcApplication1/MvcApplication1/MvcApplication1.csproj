@@ -112,31 +112,35 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LetterController.cs" />
     <Compile Include="DataBase\Letter.cs">
-      <DependentUpon>ModelMail.tt</DependentUpon>
+      <DependentUpon>MailModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataBase\ModelMail.Context.cs">
+    <Compile Include="DataBase\MailModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModelMail.Context.tt</DependentUpon>
+      <DependentUpon>MailModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataBase\ModelMail.cs">
+    <Compile Include="DataBase\MailModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModelMail.tt</DependentUpon>
+      <DependentUpon>MailModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataBase\ModelMail.Designer.cs">
+    <Compile Include="DataBase\MailModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModelMail.edmx</DependentUpon>
+      <DependentUpon>MailModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="DataBase\User.cs">
-      <DependentUpon>ModelMail.tt</DependentUpon>
+      <DependentUpon>MailModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helper\Helper.cs" />
+    <Compile Include="Models\LetterModal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -145,7 +149,12 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\jquery-1.9.1.js" />
-    <Content Include="Styles\StyleSheet.css" />
+    <Content Include="Scripts\Main.js" />
+    <Content Include="Styles\Home.css" />
+    <Content Include="Styles\Inbox.css" />
+    <Content Include="Styles\Register.css" />
+    <Content Include="Styles\MainStyles.css" />
+    <Content Include="Styles\To_Write.css" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -157,7 +166,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -169,34 +177,37 @@
     <Content Include="Views\Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Home\Register.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Auth\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <EntityDeploy Include="DataBase\ModelMail.edmx">
+    <Content Include="Views\Home\To_Write.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="DataBase\MailModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ModelMail.Designer.cs</LastGenOutput>
+      <LastGenOutput>MailModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DataBase\ModelMail.Context.tt">
+    <Content Include="DataBase\MailModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModelMail.edmx</DependentUpon>
-      <LastGenOutput>ModelMail.Context.cs</LastGenOutput>
+      <DependentUpon>MailModel.edmx</DependentUpon>
+      <LastGenOutput>MailModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="DataBase\ModelMail.edmx.diagram">
-      <DependentUpon>ModelMail.edmx</DependentUpon>
+    <Content Include="DataBase\MailModel.edmx.diagram">
+      <DependentUpon>MailModel.edmx</DependentUpon>
     </Content>
-    <Content Include="DataBase\ModelMail.tt">
+    <Content Include="DataBase\MailModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModelMail.edmx</DependentUpon>
-      <LastGenOutput>ModelMail.cs</LastGenOutput>
+      <DependentUpon>MailModel.edmx</DependentUpon>
+      <LastGenOutput>MailModel.cs</LastGenOutput>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Inbox.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

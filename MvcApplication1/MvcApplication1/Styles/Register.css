@@ -1,0 +1,22 @@
+﻿#Reg
+{
+    padding-left:10px;
+    margin-top:0px;
+}
+
+#Reg input
+{
+    position:absolute;
+    left:350px;
+}
+
+    #Reg p:first-child
+    {
+        margin-top:0px;
+        padding-top:1em;
+    }
+
+#message
+{
+    color:red;
+}

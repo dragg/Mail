@@ -2,3 +2,19 @@
     Layout = "~/Views/Layout.cshtml";
     ViewBag.Title = "Index";
 }
+
+<div id="message">
+    @if(Session["User"] != null)
+    {
+    <div id="menu">
+        <a class="menu" href="/Home/To_Write">To Write</a>
+        <a class="menu" href="/Home/Inbox">Inbox</a>
+        <a class="menu" href="/Home/Outbox">Outbox</a>
+    </div>
+        @ViewBag.Message
+        if (ViewBag.Layout != null)
+        {
+            @RenderBody()
+        }
+    }
+</div>

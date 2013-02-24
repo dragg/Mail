@@ -10,13 +10,11 @@
     height:100px;
     width:100%;
 }
-
 #header
 {
     border-bottom:solid;
     border-color:black;
 }
-
 #footer
 {
     border-top:solid;
@@ -35,7 +33,7 @@
     height:650px;
 }
 
-a
+.menu
 {
     display:block;
     position:relative;
@@ -44,12 +42,7 @@ a
     color:blue;
     text-align:center;
 }
-
-    a:visited
-    {
-    }
-
-    a:hover
+    #menu > a:hover
     {
         font-size:17px;
         color:red;
@@ -57,49 +50,42 @@ a
 
 #menu
 {
+    float:left;
     width:125px;
     border-right:solid;
     border-color:black;
     height:650px;
 }
-
 .menu
 {
     padding:0;
     margin:0;
 }
 
-#Enter, #Register
+.Enter, .Register
 {
     position:absolute;
     right:25px;
     top:25px;
 }
-
-#Register
+.Register
 {
     top:50px;
 }
-
 .button
 {
     width:75px;
 }
 
-#Reg
+#message
 {
-    padding-left:10px;
-    margin-top:0px;
+    text-align:center;
+    color:green;
+    font-size:20px;
 }
 
-#Reg input
+#Logout
 {
-    position:absolute;
-    left:350px;
+    width:200px;
+    margin-right:20px;
 }
-
-    #Reg p:first-child
-    {
-        margin-top:0px;
-        padding-top:1em;
-    }

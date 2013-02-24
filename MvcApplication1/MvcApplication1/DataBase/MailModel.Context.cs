@@ -25,7 +25,7 @@ namespace MvcApplication1.DataBase
             throw new UnintentionalCodeFirstException();
         }
     
-        public DbSet<Letter> Letter { get; set; }
-        public DbSet<User> User { get; set; }
+        public DbSet<Letter> Letters { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }

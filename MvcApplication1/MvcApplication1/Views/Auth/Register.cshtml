@@ -1,0 +1,18 @@
+﻿@{
+    Layout = "~/Views/Layout.cshtml";
+    ViewBag.Title = "Register";
+    ViewBag.Type = "Register";
+    if(ViewBag.Flag != "True")
+    {
+        ViewBag.Style = "Styles/Register";
+    }
+}
+
+<div id="Reg">                    
+    <form action="/Auth/Register" method="post">
+        <p>Nick :<input type="text" name="Nick" /></p>
+        <p>Password :<input type="password" name="Password" /></p>
+        <p>Confinm password :<input type="password" name="confinmPassword" /></p>
+        <input class="button" type="submit" value="Register" />
+    </form>
+</div>

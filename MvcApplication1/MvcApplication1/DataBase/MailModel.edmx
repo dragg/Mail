@@ -21,7 +21,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="TextLetter" Type="text" Nullable="false" />
           <Property Name="Subject" Type="nvarchar" MaxLength="100" />
           <Property Name="IdUserFromWhom" Type="int" Nullable="false" />
@@ -65,22 +65,22 @@
     <edmx:ConceptualModels>
       <Schema Namespace="MailModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="MailEntities" p1:LazyLoadingEnabled="true">
-          <EntitySet Name="Letter" EntityType="MailModel.Letter" />
-          <EntitySet Name="User" EntityType="MailModel.User" />
+          <EntitySet Name="Letters" EntityType="MailModel.Letter" />
+          <EntitySet Name="Users" EntityType="MailModel.User" />
           <AssociationSet Name="FK_Letter_User" Association="MailModel.FK_Letter_User">
-            <End Role="User" EntitySet="User" />
-            <End Role="Letter" EntitySet="Letter" />
+            <End Role="User" EntitySet="Users" />
+            <End Role="Letter" EntitySet="Letters" />
           </AssociationSet>
           <AssociationSet Name="FK_Letter_User1" Association="MailModel.FK_Letter_User1">
-            <End Role="User" EntitySet="User" />
-            <End Role="Letter" EntitySet="Letter" />
+            <End Role="User" EntitySet="Users" />
+            <End Role="Letter" EntitySet="Letters" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Letter">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
           <Property Name="TextLetter" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
           <Property Name="Subject" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
           <Property Name="IdUserFromWhom" Type="Int32" Nullable="false" />
@@ -95,8 +95,8 @@
           <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
           <Property Name="Nick" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="Password" Type="Binary" Nullable="false" MaxLength="64" FixedLength="true" />
-          <NavigationProperty Name="Letter" Relationship="MailModel.FK_Letter_User" FromRole="User" ToRole="Letter" />
-          <NavigationProperty Name="Letter1" Relationship="MailModel.FK_Letter_User1" FromRole="User" ToRole="Letter" />
+          <NavigationProperty Name="Letters" Relationship="MailModel.FK_Letter_User" FromRole="User" ToRole="Letter" />
+          <NavigationProperty Name="Letters1" Relationship="MailModel.FK_Letter_User1" FromRole="User" ToRole="Letter" />
         </EntityType>
         <Association Name="FK_Letter_User">
           <End Role="User" Type="MailModel.User" Multiplicity="1" />
@@ -128,7 +128,7 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="MailModelStoreContainer" CdmEntityContainer="MailEntities">
-          <EntitySetMapping Name="Letter">
+          <EntitySetMapping Name="Letters">
             <EntityTypeMapping TypeName="MailModel.Letter">
               <MappingFragment StoreEntitySet="Letter">
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -139,7 +139,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="User">
+          <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="MailModel.User">
               <MappingFragment StoreEntitySet="User">
                 <ScalarProperty Name="Id" ColumnName="Id" />

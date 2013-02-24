@@ -16,15 +16,15 @@ namespace MvcApplication1.DataBase
     {
         public User()
         {
-            this.Letter = new HashSet<Letter>();
-            this.Letter1 = new HashSet<Letter>();
+            this.Letters = new HashSet<Letter>();
+            this.Letters1 = new HashSet<Letter>();
         }
     
         public int Id { get; set; }
         public string Nick { get; set; }
         public byte[] Password { get; set; }
     
-        public virtual ICollection<Letter> Letter { get; set; }
-        public virtual ICollection<Letter> Letter1 { get; set; }
+        public virtual ICollection<Letter> Letters { get; set; }
+        public virtual ICollection<Letter> Letters1 { get; set; }
     }
 }

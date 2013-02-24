@@ -6,43 +6,49 @@
 <html>
     <head>
         <title>@ViewBag.Title</title>
-        <link rel="stylesheet" type="text/css" href="~/Styles/StyleSheet.css" />
+        <link rel="stylesheet" type="text/css" href="~/Styles/MainStyles.css" />
+        <link rel="stylesheet" type="text/css" href="~/@(ViewBag.Style).css" />
+        <script src="~/Scripts/jquery-1.9.1.js"></script>
+        <script src="~/Scripts/@(ViewBag.Script).js"></script>
     </head>
     <body>
         <div>
             <div id="header">
-                <div id="Enter">
-                    <form action="~/Home/Login" method="post">
-                        <input type="text" name="login" placeholder="login" />
-                        <input type="password" name="password" placeholder="password" />
-                        <input class="button" type="submit" value="Log_in" />
-                    </form>
-                </div>
-                <div id="Register">
-                    <form action="~/Home/Register" method="get">
-                        <input class="button" type="submit" value="Register" />
-                    </form>
-                </div>
-            </div>
-
-            <div id="mid">
-                @if(ViewBag.Type != "Register")
+                @if(Session["User"] == null)
                 {
-                    <div id="menu">
-                        <a class="menu" href="">Inbox</a>
-                        <a class="menu" href="">Outbox</a>
+                    <div class="Enter">
+                        <form action="~/Auth/Login" method="post">
+                            <input type="text" name="login" placeholder="login" value="@(ViewBag.Nick)" />
+                            <input type="password" name="password" placeholder="password" />
+                            <input class="button" type="submit" value="Log_in" />
+                        </form>
                     </div>
-                    @RenderBody()
+                    <div class="Register">
+                        <form action="~/Auth/Register" method="get">
+                            <input class="button" type="submit" value="Register" />
+                        </form>
+                    </div>
                 }
                 else
                 {
-                    <div id="Reg">
-                        @RenderBody()
+                    <div class="Enter">
+                        <span>Welcome, @(((MvcApplication1.DataBase.User)Session["User"]).Nick)!</span>
                     </div>
+                    
+                    <div class="Register">
+                        <form action="~/Auth/Log_out" method="get">
+                            <input class="button" type="submit" value="Log out" />
+                        </form>
+                    </div>
+                    
                 }
             </div>
+
+            <div id="mid">
+                @RenderBody()
+            </div>
             
-            <div id="footer">    
+            <div id="footer">
             </div>
         </div>
     </body>

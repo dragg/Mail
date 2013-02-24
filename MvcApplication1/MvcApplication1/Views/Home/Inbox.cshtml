@@ -1,0 +1,22 @@
+﻿@{
+    ViewBag.Title = "Inbox";
+    Layout = "Index.cshtml";
+    ViewBag.Layout = "Exist";
+    ViewBag.Style = "Styles/Inbox";
+    ViewBag.Script = "Main";
+}
+
+<div>
+    @foreach(MvcApplication1.Models.LetterModal item in ViewBag.Letters)
+    {
+        <div class="Letter">
+            <div class="Whom">
+                @item.UserFromWhom
+            </div>
+            <div class="Subject">
+                <a class="getLetter">@item.Subject</a>
+            </div>
+            <input type="hidden" value="@(item.Id)" id="Id" name="Id" />
+        </div>
+    }
+</div>
