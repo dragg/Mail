@@ -49,7 +49,25 @@ namespace MvcApplication1.Controllers
                 {
                     list.Add(new LetterModal(mail.Users.Single(u => u.Id == item.IdUserFromWhom).Nick, mail.Users.Single(u => u.Id == item.IdUserWhom).Nick, item.Subject, item.TextLetter, item.Id));
                 }
-                
+                list.Reverse();
+                ViewBag.Letters = list;
+            }
+            return View();
+        }
+
+        public ActionResult Outbox()
+        {
+            var emailCookie = Request.Cookies["Login"];
+            using (var mail = new MailEntities())
+            {
+                var user = mail.Users.SingleOrDefault(u => u.Nick == emailCookie.Value);
+                var letters = mail.Letters.Where(u => u.IdUserFromWhom == user.Id).ToArray();
+                var list = new List<LetterModal>();
+                foreach (var item in letters)
+                {
+                    list.Add(new LetterModal(mail.Users.Single(u => u.Id == item.IdUserFromWhom).Nick, mail.Users.Single(u => u.Id == item.IdUserWhom).Nick, item.Subject, item.TextLetter, item.Id));
+                }
+                list.Reverse();
                 ViewBag.Letters = list;
             }
             return View();

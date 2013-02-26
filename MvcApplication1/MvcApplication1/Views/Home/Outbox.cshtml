@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "Inbox";
+    ViewBag.Title = "Outbox";
     Layout = "Index.cshtml";
     ViewBag.Layout = "Exist";
     ViewBag.Style = "Styles/Box";
@@ -11,7 +11,7 @@
     {
         <div class="Letter">
             <div class="Whom">
-                @item.UserFromWhom
+                @item.UserWhom
             </div>
             <div class="Subject">
                 <a class="getLetter">@item.Subject</a>

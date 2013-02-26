@@ -151,7 +151,7 @@
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\Main.js" />
     <Content Include="Styles\Home.css" />
-    <Content Include="Styles\Inbox.css" />
+    <Content Include="Styles\Box.css" />
     <Content Include="Styles\Register.css" />
     <Content Include="Styles\MainStyles.css" />
     <Content Include="Styles\To_Write.css" />
@@ -208,6 +208,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\Inbox.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Outbox.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
