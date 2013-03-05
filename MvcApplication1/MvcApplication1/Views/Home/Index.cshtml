@@ -7,9 +7,9 @@
     @if(Session["User"] != null)
     {
     <div id="menu">
-        <a class="menu" href="/Home/To_Write">To Write</a>
-        <a class="menu" href="/Home/Inbox">Inbox</a>
-        <a class="menu" href="/Home/Outbox">Outbox</a>
+        <a class="menu write">To Write</a>
+        <a class="menu inbox">Inbox</a>
+        <a class="menu outbox">Outbox</a>
     </div>
         @ViewBag.Message
         if (ViewBag.Layout != null)
