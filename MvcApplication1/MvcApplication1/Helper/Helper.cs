@@ -69,7 +69,7 @@ namespace MvcApplication1.Helper
             using (var mail = new MailEntities())
             {
                 var user = mail.Users.SingleOrDefault(u => u.Nick == Nick);
-                var letters = mail.Letters.Where(u => (l == Let.Inbox ? u.IdUserWhom : u.IdUserFromWhom) == user.Id).ToArray();
+                var letters = mail.Letters.Where(u => (l == Let.Inbox ? u.IdUserWhom : u.IdUserFromWhom) == user.Id);//;.ToArray();
                 var list = new List<LetterModal>();
                 foreach (var item in letters)
                 {

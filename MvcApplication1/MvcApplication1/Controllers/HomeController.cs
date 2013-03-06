@@ -33,23 +33,6 @@ namespace MvcApplication1.Controllers
             return View();
         }
 
-        public ActionResult To_Write()
-        {
-            return View();
-        }
-
-        public ActionResult Inbox()
-        {
-            ViewBag.Letters = Helper.Helper.GetLetter(Let.Inbox, Request.Cookies["Login"].Value);
-            return View();
-        }
-
-        public ActionResult Outbox()
-        {
-            ViewBag.Letters = Helper.Helper.GetLetter(Let.Outbox, Request.Cookies["Login"].Value);
-            return View();
-        }
-
         [HttpPost]
         public ActionResult To_Write(string Whom, string Subject, string text)
         {

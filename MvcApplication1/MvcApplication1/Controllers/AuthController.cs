@@ -56,10 +56,9 @@ namespace MvcApplication1.Controllers
 
         public ActionResult Log_out()
         {
-
             Session.Abandon();
 
-            Response.SetCookie(new HttpCookie("Email") { Expires = new DateTime() });
+            Response.SetCookie(new HttpCookie("Login") { Expires = new DateTime() });
             Response.SetCookie(new HttpCookie("Password") { Expires = new DateTime() });
 
             return RedirectToAction("Index", "Home");

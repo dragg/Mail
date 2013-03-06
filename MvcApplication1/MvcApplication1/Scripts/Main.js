@@ -30,13 +30,12 @@ function ready()
                 var item = $('<div>', { "class": "Letter" });
                 var dat = 
                         '<div class="Whom">'+
-                            data[i].UserFromWhom+
+                            (par == "inbox" ? data[i].UserFromWhom : data[i].UserWhom) +
                         '</div>'+
                         '<div class="Subject">'+
                             '<a class="getLetter">'+data[i].Subject+'</a>'+
                         '</div>'+
                         '<input type="hidden" value='+data[i].Id+' id="Id" name="Id" />';
-                        //item.append(html(dat));
                         e.append(item.html(dat));
             }
             e.appendTo("#message");

@@ -183,9 +183,6 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Home\To_Write.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <EntityDeploy Include="DataBase\MailModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>MailModel.Designer.cs</LastGenOutput>
@@ -205,12 +202,6 @@
       <DependentUpon>MailModel.edmx</DependentUpon>
       <LastGenOutput>MailModel.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Home\Inbox.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Home\Outbox.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
